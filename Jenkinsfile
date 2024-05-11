@@ -20,20 +20,13 @@ pipeline {
                 echo 'image scanning ho gayi'
             }
         }
-        stage("push"){
+        stage("Build"){
             steps{
-                withCredentials([usernamePassword(credentialsId:"dockerHub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
-                sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
-                sh "docker tag node-app-test-new:latest ${env.dockerHubUser}/node-app-test-new:latest"
-                sh "docker push ${env.dockerHubUser}/node-app-test-new:latest"
-                echo 'image push ho gaya'
+                withDockerRegistry(credentialsId: 'docker-cred', url: 'https://registry.hub.docker.com') 
+                sh "docker build madhupdevops/node-app-test-new:latest"
+                echo 'image build ho gaya'
                 }
-            }
-        }
-        stage("deploy"){
-            steps{
-                sh "docker-compose down && docker-compose up -d"
-                echo 'deployment ho gayi'
+                
             }
         }
     }
