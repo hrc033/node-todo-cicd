@@ -22,7 +22,7 @@ pipeline {
         }
         stage("Build"){
             steps{
-                withDockerRegistry(credentialsId: 'docker-cred', url: 'https://registry.hub.docker.com') 
+                withDockerRegistry(credentialsId: 'docker-cred', url: 'https://registry.hub.docker.com') {
                 sh "docker build madhupdevops/node-app-test-new:latest"
                 echo 'image build ho gaya'
                 }
