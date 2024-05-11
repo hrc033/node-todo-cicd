@@ -2,31 +2,21 @@ pipeline {
     agent any
     
     stages {
+        stage("Clean Workspace"){
+            cleanWs()
+        }
         
-        stage("code"){
+        stage("Code checkout"){
             steps{
-                git url: "https://github.com/LondheShubham153/node-todo-cicd.git", branch: "master"
-                echo 'bhaiyya code clone ho gaya'
+                git url: "https://github.com/DevMadhup/node-todo-cicd.git", branch: "master"
             }
         }
-        stage("build and test"){
-            steps{
-                sh "docker build -t node-app-test-new ."
-                echo 'code build bhi ho gaya'
-            }
-        }
-        stage("scan image"){
-            steps{
-                echo 'image scanning ho gayi'
-            }
-        }
-        stage("Build"){
+        
+        stage("Build Docker image"){
             steps{
                 withDockerRegistry(credentialsId: 'docker-cred', url: 'https://registry.hub.docker.com') {
-                sh "docker build madhupdevops/node-app-test-new:latest"
-                echo 'image build ho gaya'
-                }
-                
+                sh "docker build -t madhupdevops/node-app-test-new:latest ."
+                }   
             }
         }
     }
