@@ -3,7 +3,9 @@ pipeline {
     
     stages {
         stage("Clean Workspace"){
-            cleanWs()
+            steps{
+                cleanWs()
+            }
         }
         
         stage("Code checkout"){
@@ -15,7 +17,7 @@ pipeline {
         stage("Build Docker image"){
             steps{
                 withDockerRegistry(credentialsId: 'docker-cred', url: 'https://registry.hub.docker.com') {
-                sh "docker build -t madhupdevops/node-app-test-new:latest ."
+                    sh "docker build -t madhupdevops/node-app-test-new:latest ."
                 }   
             }
         }
