@@ -4,14 +4,6 @@ pipeline {
     agent any
     
     stages {
-        stage("Clean Workspace"){
-            steps{
-                script{
-                    cleanWs()
-                }
-            }
-        }
-        
         stage("Code checkout"){
             steps{
                 script{
