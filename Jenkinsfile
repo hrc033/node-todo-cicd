@@ -1,4 +1,5 @@
 @Library("Shared_lib@main") _
+
 pipeline {
     agent any
     
@@ -22,9 +23,15 @@ pipeline {
         stage("Build Docker image"){
             steps{
                 script{
-                    withDockerRegistry(credentialsId: 'docker-cred', url: 'https://registry.hub.docker.com') {
-                        docker_build("node-app","latest","madhupdevops")
-                    }   
+                        docker_build("node-app","latest","madhupdevops")  
+                }
+            }
+        }
+
+        stage("Push Docker image"){
+            steps{
+                script{
+                        docker_push("node-app","latest","madhupdevops")  
                 }
             }
         }
