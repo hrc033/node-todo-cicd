@@ -20,6 +20,14 @@ pipeline {
                 }
             }
         }
+
+        stage("Code checkout"){
+            steps{
+                script{
+                    owasp_dependency()
+                }
+            }
+        }
         
         stage("Build Docker image"){
             steps{
