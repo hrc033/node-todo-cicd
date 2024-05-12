@@ -15,7 +15,7 @@ pipeline {
         stage("Code checkout"){
             steps{
                 script{
-                    git url: "https://github.com/DevMadhup/node-todo-cicd.git", branch: "master"
+                    code_checkout("https://github.com/DevMadhup/node-todo-cicd.git","master")
                 }
             }
         }
@@ -31,7 +31,7 @@ pipeline {
         stage("Push Docker image"){
             steps{
                 script{
-                        docker_push("node-app","latest","madhupdevops")  
+                        docker_push("node-app","v1","madhupdevops")  
                 }
             }
         }
