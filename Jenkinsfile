@@ -4,10 +4,19 @@ pipeline {
     agent any
     
     stages {
+
+        stage("Clean WorkSpace"){
+            steps{
+                script{
+                    cleanWs()
+                }
+            }
+        }
+        
         stage("Code checkout"){
             steps{
                 script{
-                    code_checkout("https://github.com/DevMadhup/node-todo-cicd.git","master")
+                    code_checkout()
                 }
             }
         }
