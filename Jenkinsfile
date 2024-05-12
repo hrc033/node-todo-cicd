@@ -24,7 +24,7 @@ pipeline {
         stage("Build Docker image"){
             steps{
                 script{
-                        docker_build("node-app","latest","madhupdevops")  
+                        docker_build("node-app","v1","madhupdevops")  
                 }
             }
         }
@@ -33,6 +33,14 @@ pipeline {
             steps{
                 script{
                         docker_push("node-app","v1","madhupdevops")  
+                }
+            }
+        }
+
+        stage("Docker Artifacts Cleanup"){
+            steps{
+                script{
+                        docker_cleanup("node-app","v1","madhupdevops")  
                 }
             }
         }
