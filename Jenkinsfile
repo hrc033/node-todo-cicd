@@ -4,21 +4,27 @@ pipeline {
     stages {
         stage("Clean Workspace"){
             steps{
-                cleanWs()
+                script{
+                    cleanWs()
+                }
             }
         }
         
         stage("Code checkout"){
             steps{
-                git url: "https://github.com/DevMadhup/node-todo-cicd.git", branch: "master"
+                script{
+                    git url: "https://github.com/DevMadhup/node-todo-cicd.git", branch: "master"
+                }
             }
         }
         
         stage("Build Docker image"){
             steps{
-                withDockerRegistry(credentialsId: 'docker-cred', url: 'https://registry.hub.docker.com') {
-                    sh "docker build -t madhupdevops/node-app-test-new:latest ."
-                }   
+                script{
+                    withDockerRegistry(credentialsId: 'docker-cred', url: 'https://registry.hub.docker.com') {
+                        docker_build("node-app","latest","madhupdevops")
+                    }   
+                }
             }
         }
     }
