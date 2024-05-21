@@ -16,7 +16,7 @@ pipeline {
         stage("Code checkout"){
             steps{
                 script{
-                    code_checkout()
+                    code_checkout("https://github.com/DevMadhup/node-todo-cicd.git","master")
                 }
             }
         }
