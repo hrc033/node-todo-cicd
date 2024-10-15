@@ -66,7 +66,7 @@ cd node-todo-cicd
 - Remove Dockerfile and docker-compose file to make sure we are not using it for building the image.
 ```bash
 rm -rv Dockerfile
-rm -rv docker-compose.yml
+rm -rv docker-compose.yaml
 ```
 #
 - Run the following command to get the pack builder
@@ -78,6 +78,8 @@ pack build suggest
 ```bash
 pack build --builder=<your-builder-from-above-command> node-app
 ```
+<img width="894" alt="image" src="https://github.com/user-attachments/assets/33e00d6d-0a98-4e16-9783-e07b7a155459">
+
 #
 - After build, check images
 ```bash
