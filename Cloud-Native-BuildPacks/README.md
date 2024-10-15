@@ -79,6 +79,8 @@ pack build suggest
 pack build --builder=<your-builder-from-above-command> node-app
 ```
 <img width="894" alt="image" src="https://github.com/user-attachments/assets/33e00d6d-0a98-4e16-9783-e07b7a155459">
+> [!Note]
+> This build will take some time be patient.
 
 #
 - After build, check images
