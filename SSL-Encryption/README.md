@@ -1,7 +1,7 @@
 ## How to convert an application from HTTP to HTTPS
 
 ### Steps:
-- Launch an EC2 instance (t2.medium) and deploy this (node-todo-cicd) application on it
+- Launch an EC2 instance (t2.medium) and <mark><b>deploy this (node-todo-cicd) application</b></mark> on it
 #
 - Update the system
 ```bash
